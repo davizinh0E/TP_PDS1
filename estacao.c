@@ -65,10 +65,14 @@ void adicionarEstacao(){
 
 void listarEstacoes(){
     if(totalEstacoes == 0){
-        printf("Nao ha estacoes cadastradas.");
+        printf("Nao ha estacoes cadastradas.\n");
+        printf("\nPressione Enter para continuar...");
+        getchar();//para nao voltar no menu automaticamente
         return ;
         }
     for(int i = 0; i < totalEstacoes; i ++){
-        printf("Id: %d\nEstacao: %s\nOperador: %s\nSensor: %s\nData:%d/%d/%d\nLeituras: %d\nMedia: %.2f\nVariancia: %.2f\nDesvio Padrao: %.2f", estacoes[i].id, estacoes[i].nome, estacoes[i].operador, estacoes[i].sensor, estacoes[i].data.dia, estacoes[i].data.mes, estacoes[i].data.ano, estacoes[i].n, estacoes[i].media, estacoes[i].variancia, estacoes[i].desvioPadrao);
+        printf("Id: %d\nEstacao: %s\nOperador: %s\nSensor: %s\nData:%d/%d/%d\nLeituras: %d\nMedia: %.2f\nVariancia: %.2f\nDesvio Padrao: %.2f\n", estacoes[i].id, estacoes[i].nome, estacoes[i].operador, estacoes[i].sensor, estacoes[i].data.dia, estacoes[i].data.mes, estacoes[i].data.ano, estacoes[i].n, estacoes[i].media, estacoes[i].variancia, estacoes[i].desvioPadrao);   
     }
+    printf("\nPressione Enter para continuar...");
+    getchar();
 }

@@ -15,8 +15,23 @@ int main(){
         case 2:
             printf("em construção\n");
             break;
+        case 3:
+            printf("em construção\n");
+            break;    
         case 4:
             listarEstacoes();
+            break;
+        case 5:
+            printf("em construção\n");
+            break;
+        case 6:
+            printf("em construção\n");
+            break;
+        case 7:
+            printf("em construção\n");
+            break;
+        case 8:
+            printf("em construção\n");
             break;
         case 0:
             printf("Saindo...\n");
