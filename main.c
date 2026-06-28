@@ -22,7 +22,7 @@ int main(){
             listarEstacoes();
             break;
         case 5:
-            printf("em construção\n");
+            buscarPorOperador();
             break;
         case 6:
             printf("em construção\n");

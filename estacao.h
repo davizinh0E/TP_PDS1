@@ -27,5 +27,6 @@ extern int contador; //contador de ids
 
 void adicionarEstacao();
 void listarEstacoes();
+void buscarPorOperador();
 
 #endif

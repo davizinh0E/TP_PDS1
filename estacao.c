@@ -76,3 +76,24 @@ void listarEstacoes(){
     printf("\nPressione Enter para continuar...");
     getchar();
 }
+
+
+void buscarPorOperador(){
+    char operadorBuscado[40];
+    printf("Digite o nome do operador: \n");
+    fgets(operadorBuscado, 40, stdin);
+    operadorBuscado[strcspn(operadorBuscado, "\n")]= '\0';
+
+    int encontrou = 0;
+
+    for(int i = 0; i < totalEstacoes; i++){
+        if(strcmp(estacoes[i].operador, operadorBuscado) == 0){
+            printf("Id: %d\nEstacao: %s\nOperador: %s\nSensor: %s\nData:%d/%d/%d\nLeituras: %d\nMedia: %.2f\nVariancia: %.2f\nDesvio Padrao: %.2f\n", estacoes[i].id, estacoes[i].nome, estacoes[i].operador, estacoes[i].sensor, estacoes[i].data.dia, estacoes[i].data.mes, estacoes[i].data.ano, estacoes[i].n, estacoes[i].media, estacoes[i].variancia, estacoes[i].desvioPadrao); 
+            encontrou = 1;
+        }
+    }
+    if(encontrou == 0)printf("Operador nao encontrado.\n");
+
+    printf("\nPressione Enter para continuar...");
+    getchar();
+}
