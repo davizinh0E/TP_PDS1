@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <math.h>
 #include "estacao.h"
 #include "estatisticas.h"
 
@@ -201,4 +202,6 @@ void detectarAnomalias(){
         }
     }
     printf("id nao encontrado.");
+    printf("\nPressione Enter para continuar...\n");
+    getchar();
 }

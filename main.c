@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "estacao.h"
+#include "arquivo.h"
 
 int main(){
     int opcao = 0;
@@ -28,7 +29,7 @@ int main(){
             detectarAnomalias();
             break;
         case 7:
-            printf("em construção\n");
+            salvarCSV();
             break;
         case 8:
             printf("em construção\n");
