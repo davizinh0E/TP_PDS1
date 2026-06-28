@@ -8,7 +8,7 @@ int main(){
     do{
         printf("1-Cadastrar estacao\n2-Editar estacao\n3-Remover estacao\n4-Listar estacoes\n5-Buscar por operador\n6-Detectar anomalias\n7-Salvar CSV\n8-Carregar CSV\n0-Sair\n");
         scanf("%d", &opcao);
-        while(getchar() != '\n'); // limpa o buffer
+        while(getchar() != '\n'); // limpa o buffer.
         switch (opcao) {
         case 1:
             adicionarEstacao();
