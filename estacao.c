@@ -15,6 +15,10 @@ void adicionarEstacao(){
         return;
     }
 
+    if(contador == 9999){
+        printf("Numero maximo de IDs alcancado!");
+        return;
+    }
     estacoes[totalEstacoes].id = contador; //atribui o id atual
     contador ++; //prepara o próximo id
 
