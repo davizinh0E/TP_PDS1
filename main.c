@@ -16,7 +16,7 @@ int main(){
             printf("em construção\n");
             break;
         case 3:
-            printf("em construção\n");
+            removerEstacao();
             break;    
         case 4:
             listarEstacoes();

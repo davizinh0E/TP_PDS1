@@ -97,3 +97,26 @@ void buscarPorOperador(){
     printf("\nPressione Enter para continuar...");
     getchar();
 }
+
+
+void removerEstacao(){
+    int idDelete = 0;
+    printf("Informe o ID da estacao a ser removida:\n");
+    scanf("%d", &idDelete);
+    
+    for(int i = 0; i<totalEstacoes; i++){
+        if(estacoes[i].id == idDelete){
+            free(estacoes[i].leituras);
+            for(int j = i; j < totalEstacoes-1;j++){
+                estacoes[j] = estacoes[j+1];
+            }
+            totalEstacoes --;
+            printf("\nPressione Enter para continuar...\n");
+            getchar();
+            return;
+        }
+    }
+    printf("Id nao encontrado.");
+    printf("\nPressione Enter para continuar...\n");
+    getchar();
+}
