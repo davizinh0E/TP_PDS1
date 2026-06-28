@@ -62,8 +62,15 @@ void adicionarEstacao(){
         printf("Ano invalido! Digite um valor entre 1900 e 2100.\n");
     } while(estacoes[totalEstacoes].data.ano < 1900 || estacoes[totalEstacoes].data.ano > 2100);
 
-    printf("Quantidade de Leituras:");
-    scanf("%d", &estacoes[totalEstacoes].n);
+    
+    do{
+        printf("Quantidade de Leituras:");
+        scanf("%d", &estacoes[totalEstacoes].n);
+        while(getchar() != '\n');
+        if(estacoes[totalEstacoes].n <= 0 || estacoes[totalEstacoes].n > 9999){
+            printf("O numero maximo de leituras e 9999.");
+        }
+    }while(estacoes[totalEstacoes].n <= 0 || estacoes[totalEstacoes].n > 9999);
 
     estacoes[totalEstacoes].leituras = malloc(estacoes[totalEstacoes].n * sizeof(float));// alocando n valores float
     if(estacoes[totalEstacoes].leituras == NULL){ //teste de memoria disponível
