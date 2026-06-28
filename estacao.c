@@ -30,16 +30,37 @@ void adicionarEstacao(){
     fgets(estacoes[totalEstacoes].sensor, 40, stdin);
     estacoes[totalEstacoes].sensor[strcspn(estacoes[totalEstacoes].sensor, "\n")] = '\0';
 
-    printf("Informe a data de criacao:\n");
-    printf("Dia: ");
-    scanf("%d", &estacoes[totalEstacoes].data.dia);
-    while(getchar() != '\n'); // limpa o buffer (\n)
+    printf("Informe a data de criacao:\n");    
+    do {
     printf("Mes: ");
     scanf("%d", &estacoes[totalEstacoes].data.mes);
     while(getchar() != '\n');
+    if(estacoes[totalEstacoes].data.mes < 1 || estacoes[totalEstacoes].data.mes > 12)
+        printf("Mes invalido! Digite um valor entre 1 e 12.\n");
+    } while(estacoes[totalEstacoes].data.mes < 1 || estacoes[totalEstacoes].data.mes > 12);
+    
+    int maxDias;//validacao de dias num mes
+    int mes = estacoes[totalEstacoes].data.mes;
+    if(mes == 2) maxDias = 29;
+    else if(mes == 4 || mes == 6 || mes == 9 || mes == 11) maxDias = 30;
+    else maxDias = 31;
+    
+    do {
+    printf("Dia: ");
+    scanf("%d", &estacoes[totalEstacoes].data.dia);
+    while(getchar() != '\n');
+    if(estacoes[totalEstacoes].data.dia < 1 || estacoes[totalEstacoes].data.dia > maxDias){
+        printf("Dia invalido! Digite um valor entre 1 e %d.\n", maxDias);
+    }
+    } while(estacoes[totalEstacoes].data.dia < 1 || estacoes[totalEstacoes].data.dia > maxDias);
+
+    do {
     printf("Ano: ");
     scanf("%d", &estacoes[totalEstacoes].data.ano);
-    while(getchar() != '\n'); // limpa o buffer
+    while(getchar() != '\n');
+    if(estacoes[totalEstacoes].data.ano < 1900 || estacoes[totalEstacoes].data.ano > 2100)
+        printf("Ano invalido! Digite um valor entre 1900 e 2100.\n");
+    } while(estacoes[totalEstacoes].data.ano < 1900 || estacoes[totalEstacoes].data.ano > 2100);
 
     printf("Quantidade de Leituras:");
     scanf("%d", &estacoes[totalEstacoes].n);
@@ -153,16 +174,37 @@ void editarEstacao(){
                 estacoes[i].sensor[strcspn(estacoes[i].sensor, "\n")] = '\0';
                 break;    
             case 4:
-                printf("Informe a data nova:\n");
-                printf("Dia: ");
-                scanf("%d", &estacoes[i].data.dia);
-                while(getchar() != '\n'); // limpa o buffer (\n)
+                printf("Informe a data de criacao:\n");    
+                do {
                 printf("Mes: ");
                 scanf("%d", &estacoes[i].data.mes);
                 while(getchar() != '\n');
+                if(estacoes[i].data.mes < 1 || estacoes[i].data.mes > 12)
+                    printf("Mes invalido! Digite um valor entre 1 e 12.\n");
+                } while(estacoes[i].data.mes < 1 || estacoes[i].data.mes > 12);
+                
+                int maxDias;//validacao de dias num mes
+                int mes = estacoes[i].data.mes;
+                if(mes == 2) maxDias = 29;
+                else if(mes == 4 || mes == 6 || mes == 9 || mes == 11) maxDias = 30;
+                else maxDias = 31;
+                
+                do {
+                printf("Dia: ");
+                scanf("%d", &estacoes[i].data.dia);
+                while(getchar() != '\n');
+                if(estacoes[i].data.dia < 1 || estacoes[i].data.dia > maxDias){
+                    printf("Dia invalido! Digite um valor entre 1 e %d.\n", maxDias);
+                }
+                } while(estacoes[i].data.dia < 1 || estacoes[i].data.dia > maxDias);
+
+                do {
                 printf("Ano: ");
                 scanf("%d", &estacoes[i].data.ano);
-                while(getchar() != '\n'); // limpa o buffer
+                while(getchar() != '\n');
+                if(estacoes[i].data.ano < 1900 || estacoes[i].data.ano > 2100)
+                    printf("Ano invalido! Digite um valor entre 1900 e 2100.\n");
+                } while(estacoes[i].data.ano < 1900 || estacoes[i].data.ano > 2100);
                 break;
             default:
                 printf("Opção invalida\n");
