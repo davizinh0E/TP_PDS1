@@ -25,7 +25,7 @@ int main(){
             buscarPorOperador();
             break;
         case 6:
-            printf("em construção\n");
+            detectarAnomalias();
             break;
         case 7:
             printf("em construção\n");

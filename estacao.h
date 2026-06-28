@@ -30,5 +30,6 @@ void listarEstacoes();
 void buscarPorOperador();
 void removerEstacao();
 void editarEstacao();
+void detectarAnomalias();
 
 #endif

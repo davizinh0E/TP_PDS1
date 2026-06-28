@@ -177,3 +177,28 @@ void editarEstacao(){
     printf("\nPressione Enter para continuar...\n");
     getchar();
 }
+
+
+void detectarAnomalias(){
+    int idAnomalia = 0;
+    printf("Informe o ID da estacao a ser estudada:\n");
+    scanf("%d", &idAnomalia);
+    while(getchar() != '\n');
+
+    for(int i = 0; i < totalEstacoes ; i++){
+        if (estacoes[i].id == idAnomalia){
+            int encontrou = 0;
+            for(int j = 0; j < estacoes[i].n; j++){
+                if(fabs(estacoes[i].leituras[j] - estacoes[i].media) > 2 * estacoes[i].desvioPadrao){
+                    printf("Leitura anomala: %.2f\n", estacoes[i].leituras[j]);
+                    encontrou = 1;
+                }
+            }
+            if(encontrou == 0) printf("Nenhuma anomalia encontrada.\n");
+            printf("\nPressione Enter para continuar...\n");
+            getchar();
+            return;
+        }
+    }
+    printf("id nao encontrado.");
+}
