@@ -2,6 +2,12 @@
 #define ESTACAO_H
 #define MAX_ESTACOES 100
 
+/*
+ * arquivo: estacao.h
+ * descricao: declaracao das structs e prototipos das funcoes
+ *             de gerenciamento de estacoes meteorologicas.
+ */
+
 struct DataLeitura
 {
     int dia;

@@ -3,6 +3,12 @@
 
 #include "estacao.h"
 
+/*
+ * arquivo: estatisticas.h
+ * descricao: declaracao dos prototipos das funcoes de calculo
+ *             estatistico — media recursiva, variancia e desvio padrao.
+ */
+
 float somaRecursiva(float *leituras, int n);
 float calcularMedia(float *leituras, int n);
 float calcularVariancia(float *leituras, int n, float media);

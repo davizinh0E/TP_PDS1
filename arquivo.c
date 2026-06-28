@@ -3,6 +3,12 @@
 #include <string.h>
 #include "arquivo.h"
 
+/*
+ * funcao: salvarCSV
+ * descricao: grava todas as estacoes cadastradas em um arquivo CSV,
+ *             incluindo todas as leituras separadas por ponto e virgula.
+ * retorno: void
+ */
 void salvarCSV()
 {
     if (totalEstacoes == 0)
@@ -49,6 +55,13 @@ void salvarCSV()
     getchar();
 }
 
+
+/*
+ * funcao: carregarCSV
+ * descricao: le o arquivo CSV e restaura as estacoes para a memoria,
+ *             recalculando todos os campos e realocando as leituras.
+ * retorno: void
+ */
 void carregarCSV()
 {
     FILE *arquivo = fopen("estacoes.csv", "r");

@@ -10,6 +10,13 @@ int totalEstacoes = 0;
 int contador = 0;
 struct Estacao estacoes[MAX_ESTACOES];
 
+/*
+ * funcao: adicionarEstacao
+ * descricao: cadastra uma nova estacao no sistema, solicitando nome,
+ *             operador, sensor, data e leituras ao usuario. Calcula
+ *             automaticamente media, variancia e desvio padrao.
+ * retorno: void
+ */
 void adicionarEstacao()
 {
     if (totalEstacoes == MAX_ESTACOES)
@@ -158,6 +165,12 @@ void adicionarEstacao()
     totalEstacoes++;
 }
 
+
+/*
+ * funcao: listarEstacoes
+ * descricao: exibe todas as estacoes cadastradas com suas estatisticas.
+ * retorno: void
+ */
 void listarEstacoes()
 {
     if (totalEstacoes == 0)
@@ -175,6 +188,12 @@ void listarEstacoes()
     getchar();
 }
 
+
+/*
+ * funcao: buscarPorOperador
+ * descricao: busca e exibe todas as estacoes de um operador especifico.
+ * retorno: void
+ */
 void buscarPorOperador()
 {
     char operadorBuscado[40];
@@ -199,6 +218,13 @@ void buscarPorOperador()
     getchar();
 }
 
+
+/*
+ * funcao: removerEstacao
+ * descricao: remove uma estacao pelo id, liberando a memoria alocada
+ *             e reorganizando o array.
+ * retorno: void
+ */
 void removerEstacao()
 {
     int idDelete = 0;
@@ -225,6 +251,13 @@ void removerEstacao()
     getchar();
 }
 
+
+/*
+ * funcao: editarEstacao
+ * descricao: permite editar nome, operador, sensor ou data de uma
+ *             estacao identificada pelo id.
+ * retorno: void
+ */
 void editarEstacao()
 {
     int idEdit = 0;
@@ -319,6 +352,13 @@ void editarEstacao()
     getchar();
 }
 
+
+/*
+ * funcao: detectarAnomalias
+ * descricao: lista leituras de uma estacao que se afastam da media
+ *             em mais de dois desvios padrao.
+ * retorno: void
+ */
 void detectarAnomalias()
 {
     int idAnomalia = 0;
