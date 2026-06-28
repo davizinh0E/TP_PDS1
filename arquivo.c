@@ -3,39 +3,45 @@
 #include <string.h>
 #include "arquivo.h"
 
-void salvarCSV(){
-    if(totalEstacoes == 0){
+void salvarCSV()
+{
+    if (totalEstacoes == 0)
+    {
         printf("Nenhuma estacao cadastrada para salvar.\n");
         printf("\nPressione Enter para continuar...\n");
         getchar();
         return;
     }
     FILE *arquivo = fopen("estacoes.csv", "w");
-    if(arquivo == NULL){
+    if (arquivo == NULL)
+    {
         printf("Erro ao abrir arquivo.\n");
         printf("\nPressione Enter para continuar...\n");
         getchar();
         return;
-    }   
+    }
     fprintf(arquivo, "ID,Nome,Operador,Sensor,Data,N,Media,Variancia,DesvioPadrao,Leituras\n");
-    for(int i = 0; i< totalEstacoes; i ++){
+    for (int i = 0; i < totalEstacoes; i++)
+    {
         fprintf(arquivo, "%d,%s,%s,%s,%d/%d/%d,%d,%.2f,%.2f,%.2f,",
-        estacoes[i].id,
-        estacoes[i].nome,
-        estacoes[i].operador,
-        estacoes[i].sensor,
-        estacoes[i].data.dia,
-        estacoes[i].data.mes,
-        estacoes[i].data.ano,
-        estacoes[i].n,
-        estacoes[i].media,
-        estacoes[i].variancia,
-        estacoes[i].desvioPadrao);
-        for(int j = 0; j < estacoes[i].n; j++){
+                estacoes[i].id,
+                estacoes[i].nome,
+                estacoes[i].operador,
+                estacoes[i].sensor,
+                estacoes[i].data.dia,
+                estacoes[i].data.mes,
+                estacoes[i].data.ano,
+                estacoes[i].n,
+                estacoes[i].media,
+                estacoes[i].variancia,
+                estacoes[i].desvioPadrao);
+        for (int j = 0; j < estacoes[i].n; j++)
+        {
             fprintf(arquivo, "%.2f", estacoes[i].leituras[j]);
-            if(j < estacoes[i].n - 1) fprintf(arquivo, ";");
+            if (j < estacoes[i].n - 1)
+                fprintf(arquivo, ";");
         }
-            fprintf(arquivo, "\n"); // pula linha para próxima estação
+        fprintf(arquivo, "\n"); // pula linha para próxima estação
     }
     fclose(arquivo);
     printf("Dados salvos com sucesso!\n");
@@ -43,27 +49,29 @@ void salvarCSV(){
     getchar();
 }
 
-
-void carregarCSV(){
+void carregarCSV()
+{
     FILE *arquivo = fopen("estacoes.csv", "r");
-    if(arquivo == NULL){
-    printf("Nenhum arquivo encontrado.\n");
-    printf("\nPressione Enter para continuar...\n");
-    getchar();
-    return;
+    if (arquivo == NULL)
+    {
+        printf("Nenhum arquivo encontrado.\n");
+        printf("\nPressione Enter para continuar...\n");
+        getchar();
+        return;
     }
 
     char linha[500];
 
     fgets(linha, 500, arquivo); // lê e descarta o cabeçalho
-    while(fgets(linha, 500, arquivo)){ // lê as estações
+    while (fgets(linha, 500, arquivo))
+    { // lê as estações
         char *token = strtok(linha, ",");
         estacoes[totalEstacoes].id = atoi(token); // converte string para int
 
-        token = strtok(NULL, ",");//continua onde parou
+        token = strtok(NULL, ","); // continua onde parou
         strcpy(estacoes[totalEstacoes].nome, token);
 
-        token = strtok(NULL, ","); 
+        token = strtok(NULL, ",");
         strcpy(estacoes[totalEstacoes].operador, token);
 
         token = strtok(NULL, ",");
@@ -78,7 +86,7 @@ void carregarCSV(){
         estacoes[totalEstacoes].n = atoi(token);
 
         token = strtok(NULL, ",");
-        estacoes[totalEstacoes].media = atof(token); //converte str para float
+        estacoes[totalEstacoes].media = atof(token); // converte str para float
 
         token = strtok(NULL, ",");
         estacoes[totalEstacoes].variancia = atof(token);
@@ -87,12 +95,13 @@ void carregarCSV(){
         estacoes[totalEstacoes].desvioPadrao = atof(token);
 
         estacoes[totalEstacoes].leituras = malloc(estacoes[totalEstacoes].n * sizeof(float));
-        for(int j = 0; j < estacoes[totalEstacoes].n; j++){
+        for (int j = 0; j < estacoes[totalEstacoes].n; j++)
+        {
             token = strtok(NULL, ";");
             estacoes[totalEstacoes].leituras[j] = atof(token);
         }
 
-        totalEstacoes ++;
+        totalEstacoes++;
     }
 
     fclose(arquivo);
