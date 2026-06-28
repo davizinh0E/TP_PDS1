@@ -13,7 +13,7 @@ int main(){
             adicionarEstacao();
             break;
         case 2:
-            printf("em construção\n");
+            editarEstacao();
             break;
         case 3:
             removerEstacao();

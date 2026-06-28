@@ -94,7 +94,7 @@ void buscarPorOperador(){
     }
     if(encontrou == 0)printf("Operador nao encontrado.\n");
 
-    printf("\nPressione Enter para continuar...");
+    printf("\nPressione Enter para continuar...\n");
     getchar();
 }
 
@@ -111,6 +111,63 @@ void removerEstacao(){
                 estacoes[j] = estacoes[j+1];
             }
             totalEstacoes --;
+            printf("\nPressione Enter para continuar...\n");
+            getchar();
+            return;
+        }
+    }
+    printf("Id nao encontrado.");
+    printf("\nPressione Enter para continuar...\n");
+    getchar();
+}
+
+
+void editarEstacao(){
+    int idEdit = 0;
+    printf("Informe o ID da estacao a ser modificada:\n");
+    scanf("%d", &idEdit);
+    while(getchar() != '\n');//nao sair do pressione enter, limpa \n
+    
+    for(int i = 0; i<totalEstacoes; i++){
+        if(estacoes[i].id == idEdit){
+            printf("Selecione o parametro a ser editado:\n");
+            printf("1-Nome\n2-Operador\n3-Sensor\n4-Data\n");
+            int opcao;
+            scanf("%d", &opcao);
+            while(getchar()!='\n');
+            switch (opcao) {
+            case 1:
+                printf("Novo nome da Estacao: ");
+                fgets(estacoes[i].nome, 40, stdin);
+                estacoes[i].nome[strcspn(estacoes[i].nome, "\n")] = '\0';;
+                break;
+            case 2:
+                printf("Novo nome do Operador Responsavel: ");
+                fgets(estacoes[i].operador, 40, stdin);
+                estacoes[i].operador[strcspn(estacoes[i].operador, "\n")] = '\0';
+                break;
+            case 3:
+                printf("Novo tipo de sensor (temperatura, humidade, pressao): ");
+                fgets(estacoes[i].sensor, 40, stdin);
+                estacoes[i].sensor[strcspn(estacoes[i].sensor, "\n")] = '\0';
+                break;    
+            case 4:
+                printf("Informe a data nova:\n");
+                printf("Dia: ");
+                scanf("%d", &estacoes[i].data.dia);
+                while(getchar() != '\n'); // limpa o buffer (\n)
+                printf("Mes: ");
+                scanf("%d", &estacoes[i].data.mes);
+                while(getchar() != '\n');
+                printf("Ano: ");
+                scanf("%d", &estacoes[i].data.ano);
+                while(getchar() != '\n'); // limpa o buffer
+                break;
+            default:
+                printf("Opção invalida\n");
+                break;
+            }
+            printf("Edicao realizada com sucesso.");
             printf("\nPressione Enter para continuar...\n");
             getchar();
             return;

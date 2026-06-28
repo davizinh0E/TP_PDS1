@@ -29,5 +29,6 @@ void adicionarEstacao();
 void listarEstacoes();
 void buscarPorOperador();
 void removerEstacao();
+void editarEstacao();
 
 #endif
