@@ -32,7 +32,7 @@ int main(){
             salvarCSV();
             break;
         case 8:
-            printf("em construção\n");
+            carregarCSV();
             break;
         case 0:
             printf("Saindo...\n");

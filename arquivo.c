@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include "arquivo.h"
 
 void salvarCSV(){
@@ -43,5 +45,58 @@ void salvarCSV(){
 
 
 void carregarCSV(){
+    FILE *arquivo = fopen("estacoes.csv", "r");
+    if(arquivo == NULL){
+    printf("Nenhum arquivo encontrado.\n");
+    printf("\nPressione Enter para continuar...\n");
+    getchar();
+    return;
+    }
 
+    char linha[500];
+
+    fgets(linha, 500, arquivo); // lê e descarta o cabeçalho
+    while(fgets(linha, 500, arquivo)){ // lê as estações
+        char *token = strtok(linha, ",");
+        estacoes[totalEstacoes].id = atoi(token); // converte string para int
+
+        token = strtok(NULL, ",");//continua onde parou
+        strcpy(estacoes[totalEstacoes].nome, token);
+
+        token = strtok(NULL, ","); 
+        strcpy(estacoes[totalEstacoes].operador, token);
+
+        token = strtok(NULL, ",");
+        strcpy(estacoes[totalEstacoes].sensor, token);
+
+        token = strtok(NULL, ","); // pega "dd/mm/aaaa"
+        estacoes[totalEstacoes].data.dia = atoi(strtok(token, "/"));
+        estacoes[totalEstacoes].data.mes = atoi(strtok(NULL, "/"));
+        estacoes[totalEstacoes].data.ano = atoi(strtok(NULL, "/"));
+
+        token = strtok(NULL, ",");
+        estacoes[totalEstacoes].n = atoi(token);
+
+        token = strtok(NULL, ",");
+        estacoes[totalEstacoes].media = atof(token); //converte str para float
+
+        token = strtok(NULL, ",");
+        estacoes[totalEstacoes].variancia = atof(token);
+
+        token = strtok(NULL, ",");
+        estacoes[totalEstacoes].desvioPadrao = atof(token);
+
+        estacoes[totalEstacoes].leituras = malloc(estacoes[totalEstacoes].n * sizeof(float));
+        for(int j = 0; j < estacoes[totalEstacoes].n; j++){
+            token = strtok(NULL, ";");
+            estacoes[totalEstacoes].leituras[j] = atof(token);
+        }
+
+        totalEstacoes ++;
+    }
+
+    fclose(arquivo);
+    printf("Dados carregados com sucesso!\n");
+    printf("\nPressione Enter para continuar...\n");
+    getchar();
 }
