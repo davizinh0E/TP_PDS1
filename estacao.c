@@ -75,7 +75,8 @@ void adicionarEstacao()
     do
     {
         valido = 1;
-        printf("Tipo de sensor (temperatura, humidade, pressao");
+        printf("Tipo de sensor:\n");
+        printf("(temperatura, humidade, pressao): ");
         fgets(estacoes[totalEstacoes].sensor, 40, stdin);
         estacoes[totalEstacoes].sensor[strcspn(estacoes[totalEstacoes].sensor, "\n")] = '\0';
         for (int i = 0; estacoes[totalEstacoes].sensor[i] != '\0'; i++)
@@ -152,19 +153,22 @@ void adicionarEstacao()
     }
 
     printf("Informe o valor das leituras:\n");
-    for (int i = 0; i < estacoes[totalEstacoes].n; i++)
+for (int i = 0; i < estacoes[totalEstacoes].n; i++)
+{
+    printf("Leitura %d: ", i + 1);
+    while(scanf("%f", &estacoes[totalEstacoes].leituras[i]) != 1)
     {
+        while(getchar() != '\n');
+        printf("Leitura invalida! Digite um numero.\n");
         printf("Leitura %d: ", i + 1);
-        scanf("%f", &estacoes[totalEstacoes].leituras[i]);
     }
-
+    while(getchar() != '\n');
+}
     estacoes[totalEstacoes].media = calcularMedia(estacoes[totalEstacoes].leituras, estacoes[totalEstacoes].n);
     estacoes[totalEstacoes].variancia = calcularVariancia(estacoes[totalEstacoes].leituras, estacoes[totalEstacoes].n, estacoes[totalEstacoes].media);
     estacoes[totalEstacoes].desvioPadrao = calcularDesvioPadrao(estacoes[totalEstacoes].variancia);
-
     totalEstacoes++;
 }
-
 
 /*
  * funcao: listarEstacoes
@@ -188,7 +192,6 @@ void listarEstacoes()
     getchar();
 }
 
-
 /*
  * funcao: buscarPorOperador
  * descricao: busca e exibe todas as estacoes de um operador especifico.
@@ -197,12 +200,10 @@ void listarEstacoes()
 void buscarPorOperador()
 {
     char operadorBuscado[40];
-    printf("Digite o nome do operador: \n");
+    printf("Digite o nome do operador: ");
     fgets(operadorBuscado, 40, stdin);
     operadorBuscado[strcspn(operadorBuscado, "\n")] = '\0';
-
     int encontrou = 0;
-
     for (int i = 0; i < totalEstacoes; i++)
     {
         if (strcmp(estacoes[i].operador, operadorBuscado) == 0)
@@ -213,12 +214,9 @@ void buscarPorOperador()
     }
     if (encontrou == 0)
         printf("Operador nao encontrado.\n");
-
     printf("\nPressione Enter para continuar...\n");
     getchar();
 }
-
-
 /*
  * funcao: removerEstacao
  * descricao: remove uma estacao pelo id, liberando a memoria alocada
@@ -250,7 +248,6 @@ void removerEstacao()
     printf("\nPressione Enter para continuar...\n");
     getchar();
 }
-
 
 /*
  * funcao: editarEstacao
@@ -351,7 +348,6 @@ void editarEstacao()
     printf("\nPressione Enter para continuar...\n");
     getchar();
 }
-
 
 /*
  * funcao: detectarAnomalias

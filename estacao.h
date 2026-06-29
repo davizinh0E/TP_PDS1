@@ -29,7 +29,7 @@ struct Estacao
     struct DataLeitura data; // Data da coleta
 };
 
-extern struct Estacao estacoes[MAX_ESTACOES];
+extern struct Estacao estacoes[MAX_ESTACOES]; //podem ser acessadar por qualquer arquivo da pasta
 extern int totalEstacoes;
 extern int contador; // contador de ids
 
